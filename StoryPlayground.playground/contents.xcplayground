@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' display-mode='rendered' buildActiveScheme='true' importAppTypes='true'>
+<playground version='6.0' target-platform='ios' display-mode='raw' buildActiveScheme='true' importAppTypes='true'>
     <pages>
         <page name='Slide1'/>
         <page name='Slide2'/>
+        <page name='Slide3'/>
+        <page name='Slide4'/>
+        <page name='Slide5'/>
+        <page name='Slide6'/>
     </pages>
 </playground>

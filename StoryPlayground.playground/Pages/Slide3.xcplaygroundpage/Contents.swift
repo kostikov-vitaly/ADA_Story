@@ -4,7 +4,7 @@ import PlaygroundSupport
 import AVFoundation
 
 var player: AVAudioPlayer!
-let sounds = ["sound1_slide1", "sound2_slide1", "slide1_speech"]
+let sounds = ["sound1_slide3", "sound2_slide3", "slide3_speech"]
 
 struct ContentView: View {
     
@@ -14,13 +14,13 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Spacer()
-            Image(uiImage: UIImage(named: "slide1.png") ?? UIImage())
+            Image(uiImage: UIImage(named: "slide3.png") ?? UIImage())
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .opacity(imageVisible ? 1.0 : 0.0)
                 .animation(.easeInOut(duration: 2.0), value: self.imageVisible)
             Spacer()
-            Text("On a cold stormy night in a small town in Minnesota, detective Roberts was sitting at her desk at the police station. Suddenly the phone rang. She picked it up, but there was silence on the other end. Thinking it was just a prank call, she hung up. Then the phone rang again.")
+            Text("Detective Roberts came to the alleged location. She started checking the house with a flashlight to make sure she didn’t miss anything or anyone. It was locked and empty. “I guess it’s a false alarm” - she reported on the radio. But her colleague responded: “The calls keep coming from the same location”")
                 .foregroundColor(.white)
                 .fontWeight(.semibold)
                 .lineSpacing(3)
@@ -35,12 +35,10 @@ struct ContentView: View {
         .onAppear(perform: {
             self.imageVisible.toggle()
             self.playSound(resource: sounds[0])
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(11), execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
                 self.playSound(resource: sounds[1])
             })
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(12), execute: {
-            })
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(14), execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(7), execute: {
                 self.textVisible.toggle()
                 self.playSound(resource: sounds[2])
             })
