@@ -35,16 +35,16 @@ struct ContentView: View {
         .onAppear(perform: {
             self.imageVisible.toggle()
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
-                self.playSound(resource: sounds[0])
+                self.playSound(resource: sounds[0], volume: 0.8)
             })
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
                 self.textVisible.toggle()
-                self.playSound(resource: sounds[1])
+                self.playSound(resource: sounds[1], volume: 1.0)
             })
         })
     }
     
-    func playSound(resource: String) {
+    func playSound(resource: String, volume: Float) {
         
         let url = Bundle.main.url(forResource: resource, withExtension: "mp3")
         
@@ -54,6 +54,7 @@ struct ContentView: View {
         
         do {
             player = try AVAudioPlayer(contentsOf: url!)
+            player.setVolume(volume, fadeDuration: 0)
             player.play()
         } catch {
             print("playback error")

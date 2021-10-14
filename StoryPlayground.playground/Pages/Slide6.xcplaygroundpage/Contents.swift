@@ -21,11 +21,11 @@ struct ContentView: View {
                 .background(Color.init(red: 0.9, green: 0.90, blue: 0.9, opacity: 1.0))
                 .onAppear(perform: {
                     self.imageVisible.toggle()
-                    self.playSound(resource: sounds[0])
+                    self.playSound(resource: sounds[0], volume: 0.3)
                 })
     }
     
-    func playSound(resource: String) {
+    func playSound(resource: String, volume: Float) {
         
         let url = Bundle.main.url(forResource: resource, withExtension: "mp3")
         
@@ -35,6 +35,7 @@ struct ContentView: View {
         
         do {
             player = try AVAudioPlayer(contentsOf: url!)
+            player.setVolume(volume, fadeDuration: 0)
             player.play()
         } catch {
             print("playback error")
